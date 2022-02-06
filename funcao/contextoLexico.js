@@ -4,4 +4,9 @@ function minhaFuncao() {
     console.log(valor)
 }
 
-func
+function exec() {
+    const valor = 'Local'
+    minhaFuncao()
+}
+
+exec()
