@@ -10,9 +10,25 @@ JavaScript paraque ela receba um valor como 0.30000000000000004 e retorne R$0,30
 
 */
 
-function formatarValorDecimal(valorDecimal) {
-    valorEmReais = `R$ ${valorDecimal.toFixed(2).toString().replace(".", ",")}`
-    console.log(valorEmReais)
+function classificaAluno(nota) {
+    let notaCorrigida = arredondar(nota)
+    if (notaCorrigida >= 40) {
+        console.log(`Aprovado com nota ${notaCorrigida}`);
+    } else {
+        console.log(`Reprovado com nota ${notaCorrigida}`);
+    }
 }
 
-formatarValorDecimal(0.1 + 0.2)
+function arredondar (nota) {
+    if (nota % 5 > 2) {
+        return nota + (5 - (nota % 5))
+    } else {
+        return nota
+    }
+}
+
+classificaAluno(100)
+classificaAluno(30)
+classificaAluno(38)
+classificaAluno(88)
+classificaAluno(84)
