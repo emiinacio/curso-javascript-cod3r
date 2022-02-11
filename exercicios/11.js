@@ -9,7 +9,11 @@ mensagem e retornando true ou false.
  */
 
 function calcularBissexto(ano) {
-    if(4 ){
-        return true
-    }
+    if ((ano % 4 == 0) && ((ano % 100 != 0) || (ano % 400 == 0))) {
+        return 'Ano Bissexto'
+    } else 
+    return 'Não é Bissexto'
 }
+
+console.log(calcularBissexto(2001))
+console.log(calcularBissexto(2044))
