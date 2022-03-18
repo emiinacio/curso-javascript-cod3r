@@ -1,7 +1,18 @@
 const express = require('express');
 const app = express();
 
-app.get('/opa', (req, res) => {
+const saudacao = require('./saudacaoMid')
+
+app.use(saudacao('Guilherme'))
+
+app.use((req, res, next) => {
+    console.log('Antes')
+
+    next();
+});
+
+app.get('/opa', (req, res, next) => {
+    console.log('Durante')
 
     res.json({
         data: [
@@ -15,6 +26,7 @@ app.get('/opa', (req, res) => {
         status: 200
     })
 
+    next()
     // res.json([
     //     {id: 7, name: 'Ana', position:1},
     //     {id: 34, name: 'Bia', position: 2},
@@ -28,9 +40,12 @@ app.get('/opa', (req, res) => {
     // })
 
     // res.send('<h1>Estou bem</h1><br></br><p>Teste</p>')
-})
+});
+
+app.use((req, res) => {
+    console.log('Depois')
+});
 
 app.listen(8080, () => {
     console.log('Backend executando...')
-})
-
+});
