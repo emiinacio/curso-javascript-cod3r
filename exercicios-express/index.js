@@ -42,6 +42,24 @@ app.get('/opa', (req, res, next) => {
     // res.send('<h1>Estou bem</h1><br></br><p>Teste</p>')
 });
 
+app.post('/clientes/relatorio', (req, res) => {
+    res.send(`Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`)
+})
+
+app.post('/corpo', (req, res) => {
+    let corpo = ''
+    req.on('data', function(parte) {
+        corpo += parte 
+    })
+    req.on('end', function() {
+        res.send(corpo)
+    })
+})
+
+app.get('/clientes/:id', (req, res) => {
+    res.send(`CLiente ${req.params.id} selecionado! `)
+})
+
 app.use((req, res) => {
     console.log('Depois')
 });
