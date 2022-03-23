@@ -7,6 +7,7 @@ const usuarioApi = require('./api/usuario');
 
 app.post('/usuario', usuarioApi.salvar);
 app.get('/usuario', usuarioApi.obter);
+require('./api/produto')(app, 'com param!')
 
 app.use(bodyParser.text());
 app.use(bodyParser.json());
